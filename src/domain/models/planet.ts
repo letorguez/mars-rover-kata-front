@@ -1,11 +1,6 @@
 import {MarsRover} from "@/domain/models/marsRover";
-import {Obstacle} from "@/domain/models/obstacle";
-import {Position} from "@/domain/models/position";
-
-export type PlanetSize = {
-    height: number;
-    width: number;
-}
+import {Obstacle} from "@/domain/models/types/obstacle";
+import {PlanetSize} from "@/domain/models/types/planetSize";
 
 export class Planet {
     private readonly size: PlanetSize;

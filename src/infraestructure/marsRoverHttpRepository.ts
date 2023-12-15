@@ -2,7 +2,7 @@
 import {MarsRoverRepository} from "@/domain/marsRoverRepository";
 import {AxiosHttpClient} from "@/infraestructure/axiosHttpClient";
 import {MarsRover} from "@/domain/models/marsRover";
-import {MarsRoverDTO} from "@/infraestructure/dto/MarsRoverDTO";
+import {MarsRoverDTO} from "@/infraestructure/dto/marsRoverDTO";
 import {Planet} from "@/domain/models/planet";
 
 

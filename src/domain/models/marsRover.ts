@@ -1,4 +1,4 @@
-import {Direction} from "@/domain/models/direction";
+import {Direction} from "@/domain/models/types/direction";
 import {Position} from "@/domain/models/position";
 
 export class MarsRover {

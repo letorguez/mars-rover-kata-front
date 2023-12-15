@@ -1,6 +1,6 @@
 import {MarsRover} from "@/domain/models/marsRover";
 import {Position} from "@/domain/models/position";
-import {Direction} from "@/domain/models/direction";
+import {Direction} from "@/domain/models/types/direction";
 
 export class MarsRoverDTO{
     constructor(private readonly latitude: number, private readonly longitude: number, private readonly direction: string) {}
