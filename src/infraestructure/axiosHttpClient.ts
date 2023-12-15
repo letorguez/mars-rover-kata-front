@@ -22,7 +22,7 @@ export class AxiosHttpClient {
         }
     }
 
-    async post(url: string, body: any): Promise<any> {
+    async post(url: string, body: string): Promise<any> {
         try {
             const response = await this.api.post(url, body);
             return response.data;
@@ -32,10 +32,10 @@ export class AxiosHttpClient {
         }
     }
 
-    async put(url: string, body: any): Promise<any> {
+    async put(url: string, body: string): Promise<any> {
         try {
             const response = await this.api.put(url, body);
-            return response.data;
+            return response.data.toJSON();
         } catch (error) {
             console.error('Error al obtener datos:', error);
             throw error;

@@ -1,6 +1,8 @@
 // repository
 import {MarsRoverRepository} from "@/domain/marsRoverRepository";
 import {AxiosHttpClient} from "@/infraestructure/axiosHttpClient";
+import {MarsRover} from "@/domain/models/marsRover";
+import {MarsRoverDTO} from "@/infraestructure/dto/MarsRoverDTO";
 
 
 class MarsRoverHttpRepository implements MarsRoverRepository {
@@ -10,8 +12,9 @@ class MarsRoverHttpRepository implements MarsRoverRepository {
         this.api = new AxiosHttpClient();
     }
 
-    async moveMarsRover(body: any): Promise<any> {
-        return await this.api.put('/mars-rover', body);
+    async moveMarsRover(command: string): Promise<MarsRover> {
+        const {latitude, longitude, direction} = await this.api.put('/mars-rover', command);
+        return new MarsRoverDTO(latitude, longitude, direction).toDomainObject();
     }
 
     async landMarsRover(body: any): Promise<any> {

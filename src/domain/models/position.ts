@@ -1,4 +1,3 @@
-export type Position = {
-    latitude: number;
-    longitude: number;
+export class Position {
+    constructor(private readonly latitude: number, private readonly longitude: number) {}
 }

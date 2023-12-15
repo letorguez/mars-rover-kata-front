@@ -2,13 +2,7 @@ import {Direction} from "@/domain/models/direction";
 import {Position} from "@/domain/models/position";
 
 export class MarsRover {
-    private readonly position: Position;
-    private readonly direction: Direction;
-
-    constructor(position: Position, direction: Direction) {
-        this.position = position;
-        this.direction = direction;
-    }
+    constructor(private readonly position: Position, private readonly direction: Direction) {}
 
     getPosition(): Position {
         return this.position;
