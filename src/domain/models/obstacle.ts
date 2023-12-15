@@ -1,6 +1,6 @@
-import {Position} from "@/domain/models/position";
+import Position from "@/domain/models/position";
 
-export class Obstacle {
+export default class Obstacle {
     constructor(private readonly position: Position) {}
 
     getPosition(): Position {

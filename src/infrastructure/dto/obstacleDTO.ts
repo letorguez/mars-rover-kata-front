@@ -1,7 +1,7 @@
-import {Obstacle} from "@/domain/models/obstacle";
-import {Position} from "@/domain/models/position";
+import Obstacle from "@/domain/models/obstacle";
+import Position from "@/domain/models/position";
 
-export class ObstacleDTO {
+export default class ObstacleDTO {
     constructor(private readonly latitude: number, private readonly longitude: number) {}
 
     toDomainObject(): Obstacle {

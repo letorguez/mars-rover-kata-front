@@ -1,13 +1,13 @@
 import axios, { AxiosInstance } from 'axios';
 
-export class AxiosHttpClient {
+export default class AxiosHttpClient {
     private api: AxiosInstance;
 
     constructor() {
         this.api = axios.create({
             baseURL: "http://localhost:3000/",
             headers: {
-                "Content-Type": "application/json ",
+                "Content-Type": "application/json",
             },
         });
     }

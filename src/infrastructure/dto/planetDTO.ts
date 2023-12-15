@@ -1,9 +1,9 @@
-import {Planet} from "@/domain/models/planet";
-import {MarsRoverDTO} from "@/infraestructure/dto/marsRoverDTO";
-import {ObstacleDTO} from "@/infraestructure/dto/obstacleDTO";
-import {PlanetSizeDTO} from "@/infraestructure/dto/planetSizeDTO";
+import Planet from "@/domain/models/planet";
+import MarsRoverDTO from "@/infrastructure/dto/marsRoverDTO";
+import ObstacleDTO from "@/infrastructure/dto/obstacleDTO";
+import PlanetSizeDTO from "@/infrastructure/dto/planetSizeDTO";
 
-export class PlanetDTO {
+export default class PlanetDTO {
     constructor(
         private readonly size: PlanetSizeDTO,
         private readonly marsRovers: MarsRoverDTO[],

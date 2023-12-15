@@ -1,8 +1,8 @@
-import {MarsRover} from "@/domain/models/marsRover";
-import {Obstacle} from "@/domain/models/obstacle";
+import MarsRover from "@/domain/models/marsRover";
+import Obstacle from "@/domain/models/obstacle";
 import {PlanetSize} from "@/domain/models/types/planetSize";
 
-export class Planet {
+export default class Planet {
     private readonly size: PlanetSize;
     private readonly marsRovers: MarsRover[];
     private readonly obstacles: Obstacle[];
