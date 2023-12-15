@@ -1,10 +1,9 @@
-// repository
 import {MarsRoverRepository} from "@/domain/marsRoverRepository";
 import {AxiosHttpClient} from "@/infraestructure/axiosHttpClient";
 import {MarsRover} from "@/domain/models/marsRover";
 import {MarsRoverDTO} from "@/infraestructure/dto/marsRoverDTO";
 import {Planet} from "@/domain/models/planet";
-
+import {PlanetDTO} from "@/infraestructure/dto/planetDTO";
 
 class MarsRoverHttpRepository implements MarsRoverRepository {
     private api: AxiosHttpClient;
@@ -14,19 +13,20 @@ class MarsRoverHttpRepository implements MarsRoverRepository {
     }
 
     async moveMarsRover(command: string): Promise<MarsRover> {
-        const {latitude, longitude, direction} = await this.api.put('/planet/mars-rover', command);
-        return new MarsRoverDTO(latitude, longitude, direction).toDomainObject();
+        const marsRoverDTO = await this.api.put<MarsRoverDTO>('/planet/mars-rover', command);
+        return marsRoverDTO.toDomainObject();
     }
 
     async landMarsRover(body: any): Promise<any> {
-        return await this.api.post('/planet/mars-rover', body);
+        return await this.api.post<MarsRoverDTO>('/planet/mars-rover', body);
     }
 
     async getPlanetDetails(): Promise<Planet> {
-        return await this.api.get('/planet');
+        const planetDTO = await this.api.get<PlanetDTO>('/planet');
+        return planetDTO.toDomainObject();
     }
 
-    async startPlanetWith(body: any): Promise<any> {
+    async startPlanetWith(body: any): Promise<any> { // NOTE: Empty body at the moment
         return await this.api.post('/planet', body);
     }
 }

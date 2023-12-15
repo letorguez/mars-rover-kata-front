@@ -12,32 +12,32 @@ export class AxiosHttpClient {
         });
     }
 
-    async get(url: string): Promise<any> {
+    async get<T>(url: string): Promise<T> {
         try {
-            const response = await this.api.get(url);
+            const response = await this.api.get<T>(url);
             return response.data;
         } catch (error) {
-            console.error('Error al obtener datos:', error);
+            console.error('Error:', error);
             throw error;
         }
     }
 
-    async post(url: string, body: string): Promise<any> {
+    async post<T>(url: string, body: string): Promise<T> {
         try {
-            const response = await this.api.post(url, body);
+            const response = await this.api.post<T>(url, body);
             return response.data;
         } catch (error) {
-            console.error('Error al obtener datos:', error);
+            console.error('Error:', error);
             throw error;
         }
     }
 
-    async put(url: string, body: string): Promise<any> {
+    async put<T>(url: string, body: string): Promise<T> {
         try {
-            const response = await this.api.put(url, body);
-            return response.data.toJSON();
+            const response = await this.api.put<T>(url, body);
+            return response.data;
         } catch (error) {
-            console.error('Error al obtener datos:', error);
+            console.error('Error:', error);
             throw error;
         }
     }
