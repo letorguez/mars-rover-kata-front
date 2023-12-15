@@ -1,5 +1,5 @@
 import {MarsRover} from "@/domain/models/marsRover";
-import {Obstacle} from "@/domain/models/types/obstacle";
+import {Obstacle} from "@/domain/models/obstacle";
 import {PlanetSize} from "@/domain/models/types/planetSize";
 
 export class Planet {
