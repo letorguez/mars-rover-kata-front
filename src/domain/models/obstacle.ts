@@ -1,5 +1,7 @@
 import {Position} from "@/domain/models/position";
 
-export type Obstacle = {
-    position: Position;
+export class Obstacle extends Position {
+    constructor(latitude: number, longitude: number) {
+        super(latitude, longitude);
+    }
 }

@@ -3,6 +3,7 @@ import {MarsRoverRepository} from "@/domain/marsRoverRepository";
 import {AxiosHttpClient} from "@/infraestructure/axiosHttpClient";
 import {MarsRover} from "@/domain/models/marsRover";
 import {MarsRoverDTO} from "@/infraestructure/dto/MarsRoverDTO";
+import {Planet} from "@/domain/models/planet";
 
 
 class MarsRoverHttpRepository implements MarsRoverRepository {
@@ -13,15 +14,15 @@ class MarsRoverHttpRepository implements MarsRoverRepository {
     }
 
     async moveMarsRover(command: string): Promise<MarsRover> {
-        const {latitude, longitude, direction} = await this.api.put('/mars-rover', command);
+        const {latitude, longitude, direction} = await this.api.put('/planet/mars-rover', command);
         return new MarsRoverDTO(latitude, longitude, direction).toDomainObject();
     }
 
     async landMarsRover(body: any): Promise<any> {
-        return await this.api.post('/mars-rover', body);
+        return await this.api.post('/planet/mars-rover', body);
     }
 
-    async getPlanetDetails(): Promise<any> {
+    async getPlanetDetails(): Promise<Planet> {
         return await this.api.get('/planet');
     }
 

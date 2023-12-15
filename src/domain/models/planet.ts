@@ -1,5 +1,6 @@
 import {MarsRover} from "@/domain/models/marsRover";
 import {Obstacle} from "@/domain/models/obstacle";
+import {Position} from "@/domain/models/position";
 
 export type PlanetSize = {
     height: number;
