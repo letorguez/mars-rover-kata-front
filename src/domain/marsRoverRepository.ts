@@ -1,7 +1,8 @@
 export interface MarsRoverRepository {
-    moveRover: (body: any) => Promise<any>
-    startPlanetWith: (body: any) => Promise<any>
+    moveMarsRover: (body: any) => Promise<any>
+    landMarsRover: (body: any) => Promise<any>
     getPlanetDetails: () => Promise<any>
+    startPlanetWith: (body: any) => Promise<any>
 }
 
 

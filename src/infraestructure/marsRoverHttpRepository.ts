@@ -10,15 +10,19 @@ class MarsRoverHttpRepository implements MarsRoverRepository {
         this.api = new AxiosHttpClient();
     }
 
-    async getPlanetDetails(): Promise<any> {
-        return await this.api.get('/planet-details');
+    async moveMarsRover(body: any): Promise<any> {
+        return await this.api.put('/mars-rover', body);
     }
 
-    async moveRover(body: any): Promise<any> {
-        return await this.api.post('/move-rover', body);
+    async landMarsRover(body: any): Promise<any> {
+        return await this.api.post('/mars-rover', body);
+    }
+
+    async getPlanetDetails(): Promise<any> {
+        return await this.api.get('/planet');
     }
 
     async startPlanetWith(body: any): Promise<any> {
-        return await this.api.post('/start-planet', body);
+        return await this.api.post('/planet', body);
     }
 }

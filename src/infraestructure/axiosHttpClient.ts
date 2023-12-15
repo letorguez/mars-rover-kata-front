@@ -31,4 +31,14 @@ export class AxiosHttpClient {
             throw error;
         }
     }
+
+    async put(url: string, body: any): Promise<any> {
+        try {
+            const response = await this.api.put(url, body);
+            return response.data;
+        } catch (error) {
+            console.error('Error al obtener datos:', error);
+            throw error;
+        }
+    }
 }
