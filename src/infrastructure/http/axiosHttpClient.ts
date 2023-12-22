@@ -5,16 +5,16 @@ export default class AxiosHttpClient {
 
     constructor() {
         this.api = axios.create({
-            baseURL: "http://localhost:8080",
+            baseURL: 'http://localhost:8080',
             headers: {
-                "Content-Type": "application/json",
+                'Content-Type': 'application/json',
             },
         });
     }
 
-    async get<T>(url: string): Promise<T> {
+    async get<Response>(url: string): Promise<Response> {
         try {
-            const response = await this.api.get<T>(url);
+            const response = await this.api.get<Response>(url);
             return response.data;
         } catch (error) {
             console.error('Error:', error);

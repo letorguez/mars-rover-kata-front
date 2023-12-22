@@ -1,6 +1,5 @@
-import MarsRover from "@/domain/models/marsRover";
-import Position from "@/domain/models/position";
-import {isDirection} from "@/domain/models/types/direction";
+import MarsRover from '@/domain/models/marsRover';
+import { isDirection } from '@/domain/models/types/direction';
 
 interface PositionResponse {
     latitude: number;
@@ -17,9 +16,5 @@ export function convertToMarsRover(marsRoverResponse: MarsRoverResponse): MarsRo
     if (!isDirection(marsRoverResponse.direction)) {
         throw new Error('Invalid direction');
     }
-    return new MarsRover(
-        marsRoverResponse.id,
-        marsRoverResponse.position,
-        marsRoverResponse.direction
-    );
+    return new MarsRover(marsRoverResponse.id, marsRoverResponse.position, marsRoverResponse.direction);
 }

@@ -1,12 +1,12 @@
-import MarsRoverRepository from '@/domain/marsRoverRepository';
+import MarsRoverClient from '@/domain/marsRoverClient';
 import AxiosHttpClient from '@/infrastructure/http/axiosHttpClient';
 import MarsRover from '@/domain/models/marsRover';
 import Planet from '@/domain/models/planet';
-import PlanetDTO from '@/infrastructure/http/planetDTO';
-import { convertToMarsRover, MarsRoverResponse } from '@/infrastructure/http/marsRover/marsRoverResponse';
+import { convertToMarsRover, MarsRoverResponse } from '@/infrastructure/http/marsRover/responses/marsRoverResponse';
 import { SendCommand } from '@/domain/models/sendCommand';
+import { convertToPlanet, PlanetResponse } from '@/infrastructure/http/marsRover/responses/planetResponse';
 
-export default class MarsRoverHttpClient implements MarsRoverRepository {
+export default class MarsRoverHttpClient implements MarsRoverClient {
     private api: AxiosHttpClient;
 
     constructor() {
@@ -15,9 +15,20 @@ export default class MarsRoverHttpClient implements MarsRoverRepository {
 
     async moveMarsRover(command: SendCommand): Promise<MarsRover> {
         try {
-            let response = await this.api.put<MarsRoverResponse, SendCommand>('/planet/mars-rover', command);
+            const response = await this.api.put<MarsRoverResponse, SendCommand>('/planet/mars-rover', command);
             return convertToMarsRover(response);
         } catch (error) {
+            console.error('Error at moveMarsRover:', error);
+            throw error;
+        }
+    }
+
+    async getPlanetDetails(): Promise<Planet> {
+        try {
+            const response = await this.api.get<PlanetResponse>('/planet');
+            return convertToPlanet(response);
+        } catch (error) {
+            console.error('Error at getPlanetDetails:', error);
             throw error;
         }
     }
@@ -25,11 +36,6 @@ export default class MarsRoverHttpClient implements MarsRoverRepository {
     async landMarsRover(body: any): Promise<any> {
         // TODO: Define promise type
         return await this.api.post<MarsRover, any>('/planet/mars-rover', body);
-    }
-
-    async getPlanetDetails(): Promise<Planet> {
-        const planetDTO = await this.api.get<PlanetDTO>('/planet');
-        return planetDTO.toDomainObject();
     }
 
     async startPlanetWith(body: any): Promise<any> {
