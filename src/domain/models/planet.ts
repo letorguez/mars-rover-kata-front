@@ -24,11 +24,4 @@ export default class Planet {
     getObstacles(): Obstacle[] {
         return this.obstacles;
     }
-
-    convertToJSON(): String {
-        let sizeAsJSON = JSON.stringify(this.size);
-        let marsRoversAsJSON = JSON.stringify(this.marsRovers);
-        let obstaclesAsJSON = JSON.stringify(this.obstacles);
-        return JSON.parse(`{"size": ${sizeAsJSON}, "marsRovers": ${marsRoversAsJSON}, "obstacles": ${obstaclesAsJSON}}`);
-    }
 }

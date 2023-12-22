@@ -5,7 +5,7 @@ export default class AxiosHttpClient {
 
     constructor() {
         this.api = axios.create({
-            baseURL: "http://localhost:3000/",
+            baseURL: "http://localhost:8080",
             headers: {
                 "Content-Type": "application/json",
             },
@@ -22,9 +22,9 @@ export default class AxiosHttpClient {
         }
     }
 
-    async post<T>(url: string, body: string): Promise<T> {
+    async post<Response, Request>(url: string, body: Request): Promise<Response> {
         try {
-            const response = await this.api.post<T>(url, body);
+            const response = await this.api.post<Response>(url, body);
             return response.data;
         } catch (error) {
             console.error('Error:', error);
@@ -32,9 +32,9 @@ export default class AxiosHttpClient {
         }
     }
 
-    async put<T>(url: string, body: string): Promise<T> {
+    async put<Response, Request>(url: string, body: Request): Promise<Response> {
         try {
-            const response = await this.api.put<T>(url, body);
+            const response = await this.api.put<Response>(url, body);
             return response.data;
         } catch (error) {
             console.error('Error:', error);

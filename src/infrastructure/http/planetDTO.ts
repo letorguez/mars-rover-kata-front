@@ -1,7 +1,7 @@
 import Planet from "@/domain/models/planet";
-import MarsRoverDTO from "@/infrastructure/dto/marsRoverDTO";
-import ObstacleDTO from "@/infrastructure/dto/obstacleDTO";
-import PlanetSizeDTO from "@/infrastructure/dto/planetSizeDTO";
+import MarsRoverDTO from "@/infrastructure/http/marsRoverDTO";
+import ObstacleDTO from "@/infrastructure/http/obstacleDTO";
+import PlanetSizeDTO from "@/infrastructure/http/planetSizeDTO";
 
 export default class PlanetDTO {
     constructor(

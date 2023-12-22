@@ -15,10 +15,4 @@ export default class MarsRover {
     getDirection(): Direction {
         return this.direction;
     }
-
-    convertToJSON(): String {
-        let positionAsJSON = JSON.stringify(this.position);
-        let directionAsJSON = JSON.stringify(this.direction);
-        return JSON.parse(`{"position": ${positionAsJSON}, "direction": ${directionAsJSON}}`);
-    }
 }

@@ -1,3 +1,4 @@
-export default class Position {
-    constructor(private readonly latitude: number, private readonly longitude: number) {}
+export default interface Position {
+    latitude: number,
+    longitude: number
 }
